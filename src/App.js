@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React from "react";
+import { useState } from "react";
+import axios from "axios";
+const App = () => {
+  const [counter, setCounter] = useState(0);
+  async function getData() {
+    try {
+      const reponse = await axios.get("");
+      console.log(reponse.data);
+    } catch (error) {
+      console.log("erreur");
+    }
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div>{counter}</div>
+      <button onClick={getData}>getData</button>
     </div>
   );
-}
+};
 
 export default App;
+
+// import "./App.css";
+// import Li from "./components/Li";
+// function App() {
+//   const items = [1, 2, 3, 4, 5];
+//   return (
+//     <div>
+//       <ul>
+//         {items.map((item, index) => (
+//           <Li data={item} key={index} />
+//         ))}
+//       </ul>
+//     </div>
+//   );
+// }
+
+// export default App;
